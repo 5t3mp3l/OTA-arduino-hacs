@@ -16,12 +16,12 @@ RUN apt-get update && \
     libstdc++6 \
     && rm -rf /var/lib/apt/lists/*
 
-# Manually download and install Arduino CLI (latest stable version)
-RUN curl -fsSL https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_64bit.tar.gz -o arduino-cli.tar.gz && \
-    tar -xvf arduino-cli.tar.gz && \
-    mv arduino-cli-* /usr/local/bin/arduino-cli && \
+# Download and install a specific version of Arduino CLI (v0.32.0)
+RUN curl -fSL https://downloads.arduino.cc/arduino-cli/arduino-cli_0.32.0_Linux_64bit.tar.gz -o arduino-cli.tar.gz && \
+    tar -xzf arduino-cli.tar.gz && \
+    mv arduino-cli_0.32.0_Linux_64bit/arduino-cli /usr/local/bin/arduino-cli && \
     chmod +x /usr/local/bin/arduino-cli && \
-    rm arduino-cli.tar.gz
+    rm -rf arduino-cli.tar.gz arduino-cli_0.32.0_Linux_64bit
 
 # Create working directories for Arduino sketches
 WORKDIR /data/arduino
