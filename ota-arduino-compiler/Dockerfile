@@ -18,8 +18,10 @@ RUN apt-get update && \
 
 # Download and install a specific version of Arduino CLI (v0.32.0)
 RUN curl -fSL https://downloads.arduino.cc/arduino-cli/arduino-cli_0.32.0_Linux_64bit.tar.gz -o arduino-cli.tar.gz && \
+    echo "Downloaded Arduino CLI archive:" && ls -lah arduino-cli.tar.gz && \
     tar -xzf arduino-cli.tar.gz && \
-    mv arduino-cli_0.32.0_Linux_64bit/arduino-cli /usr/local/bin/arduino-cli && \
+    echo "Extracted contents:" && ls -lah && \
+    mv arduino-cli*/arduino-cli /usr/local/bin/arduino-cli && \
     chmod +x /usr/local/bin/arduino-cli && \
     rm -rf arduino-cli.tar.gz arduino-cli_0.32.0_Linux_64bit
 
