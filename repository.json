@@ -1,6 +1,6 @@
 {
     "name": "OTA Arduino HACS",
-    "url": "https://github.com/<your-username>/OTA-arduino-hacs",
+    "url": "https://https://github.com/5t3mp3l/OTA-arduino-hacs",
     "maintainer": "Your Name",
     "description": "A Home Assistant add-on to compile and upload Arduino code via TFTP.",
     "version": "1.0.0"
