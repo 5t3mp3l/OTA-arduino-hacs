@@ -3,6 +3,7 @@ FROM debian:bullseye-slim
 
 # Set environment variables
 ENV LANG C.UTF-8
+ENV PATH="/root/bin:${PATH}"
 
 # Install required packages: bash, git, curl, tftp-hpa, and Arduino CLI
 RUN apt-get update && \
@@ -13,8 +14,9 @@ RUN apt-get update && \
     tftp-hpa \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Arduino CLI
-RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+# Install Arduino CLI using the official script and ensure it's in the PATH
+RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh && \
+    mv /root/bin/arduino-cli /usr/local/bin/arduino-cli
 
 # Create working directories for Arduino sketches
 WORKDIR /data/arduino
