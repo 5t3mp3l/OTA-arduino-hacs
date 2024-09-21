@@ -1,0 +1,19 @@
+name: OTA Arduino Compiler
+version: 1.0.0
+slug: ota_arduino_compiler
+description: "Compile and upload Arduino code via TFTP in Home Assistant"
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+startup: services
+ports:
+  69/udp: 69
+init_commands:
+  - "/usr/local/bin/setup_home_assistant.sh"
+schema:
+  sketch_folder: str
+  target_ip: str
+  firmware_file: str
