@@ -11,7 +11,7 @@ RUN apt-get update && \
     git \
     curl \
     tftp-hpa \
-    ca-certificates \         # Ensure SSL certificates are installed
+    ca-certificates \
     libc6 \
     libstdc++6 \
     && rm -rf /var/lib/apt/lists/*
