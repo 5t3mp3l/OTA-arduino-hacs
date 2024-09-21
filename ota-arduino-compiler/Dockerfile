@@ -21,7 +21,13 @@ RUN curl -fSL https://downloads.arduino.cc/arduino-cli/arduino-cli_0.32.0_Linux_
     echo "Downloaded Arduino CLI archive:" && ls -lah arduino-cli.tar.gz && \
     tar -xzf arduino-cli.tar.gz && \
     echo "Extracted contents:" && ls -lah && \
-    mv arduino-cli*/arduino-cli /usr/local/bin/arduino-cli && \
+    if [ -d "arduino-cli_0.32.0_Linux_64bit" ]; then \
+      echo "Moving arduino-cli binary to /usr/local/bin"; \
+      mv arduino-cli_0.32.0_Linux_64bit/arduino-cli /usr/local/bin/arduino-cli; \
+    else \
+      echo "Directory arduino-cli_0.32.0_Linux_64bit not found"; \
+      exit 1; \
+    fi && \
     chmod +x /usr/local/bin/arduino-cli && \
     rm -rf arduino-cli.tar.gz arduino-cli_0.32.0_Linux_64bit
 
