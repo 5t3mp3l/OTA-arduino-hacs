@@ -11,9 +11,10 @@ arch:
 startup: services
 ports:
   69/udp: 69
-init_commands:
-  - "/usr/local/bin/setup_home_assistant.sh"
+init: false
+services: []
+options: {}
 schema:
-  sketch_folder: str
+  sketch_file: str
   target_ip: str
-  firmware_file: str
+  board_type: str
